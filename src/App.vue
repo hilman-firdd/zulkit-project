@@ -5,11 +5,6 @@ import Navbar from './components/layouts/NavbarView.vue';
 
 <template>
   <Navbar/>
-  <!-- <header>
-    <nav>
-        <RouterLink to="/">Home</RouterLink>
-      </nav>
-  </header> -->
 
   <RouterView />
 </template>
