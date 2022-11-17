@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import Gallery from '../components/detail/Gallery.vue'
+import Gallery from '@/components/detail/Gallery.vue'
 </script>
 
 <template>
