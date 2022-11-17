@@ -3,6 +3,7 @@ import { RouterLink } from "vue-router";
 import Logo from "./LogoView.vue";
 import Navigation from "./NavigationView.vue";
 import UserInfo from "./UserInfoView.vue";
+import AuthButton from "./AuthButton.vue"
 </script>
 
 <template>
@@ -13,8 +14,9 @@ import UserInfo from "./UserInfoView.vue";
       class="container flex flex-wrap items-center justify-between mx-auto my-2"
     >
       <logo/>
+      <AuthButton/>
+      <!-- <UserInfo/> -->
       <Navigation/>
-      <UserInfo/>
     </div>
   </nav>
 </template>

@@ -31,6 +31,7 @@ const items = ref([
       <div class="flex flex-wrap -mx-1 lg:-mx-4">
         <Items 
         v-for="item in items"
+        :id="item.id"
         :key="item.id"
         :title="item.title"
         :subtitle="item.subtitle"
