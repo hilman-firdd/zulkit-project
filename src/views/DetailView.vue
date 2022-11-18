@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import GalleriesView from '@/components/Detail/GalleriesView.vue';
+import Gallery from '@/components/gallerydetail/GalleryView.vue';
 </script>
 
 <template>
@@ -13,7 +13,7 @@ import GalleriesView from '@/components/Detail/GalleriesView.vue';
                         RoboCrypto UI Kit
                     </h1>
                     <p class="text-gray-500">Build your next coin startup</p>
-                    <GalleriesView/>
+                    <Gallery/>
                     <section class="" id="orders">
                         <h1 class="mt-8 mb-3 text-lg font-semibold">About</h1>
                         <div class="text-gray-500">
