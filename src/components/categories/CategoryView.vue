@@ -5,7 +5,7 @@ import CategoriesCard from './../CategoriesCard.vue';
 
 const categories = ref([]);
 async function getCatagoriesData(){
-  const res = await axios.get('http://zullkit-backend.buildwithangga.id/api/categories?show_product=1&limit=4');
+  const res = await axios.get('http://zullkit-backend.buildwithangga.id/api/categories?show_product=1');
   categories.value = res.data.data.data
 }
 
