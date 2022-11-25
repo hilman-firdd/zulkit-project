@@ -10,7 +10,7 @@ const route = useRoute();
 
 async function itemsGet() {
     try{
-      const item = await axios.get('http://zullkit-backend.buildwithangga.id/api/categories?id='+ route.params.id +'&show_product=1');
+      const item = await axios.get('https://zullkit-backend.buildwithangga.id/api/categories?id='+ route.params.id +'&show_product=1');
       itemref.value = item.data.data.products;
       category.value = item.data.data;
     }catch (error){
