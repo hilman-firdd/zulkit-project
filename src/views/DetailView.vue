@@ -4,9 +4,15 @@ import Gallery from "@/components/gallerydetail/GalleryView.vue";
 import { RouterLink, useRoute } from "vue-router";
 import { ref, onMounted, computed } from "vue";
 import axios from "axios";
+import { useUserStore } from '@/stores/user';
 
+const userStore = useUserStore();
 const route = useRoute();
 const items = ref(false);
+
+const user = computed(() => userStore.user)
+const isLoggedIn = computed(() => userStore.isLoggedIn);
+
 async function getProduct() {
   try {
     const item = await axios.get(
@@ -24,6 +30,8 @@ const features = computed(() => {
 });
 
 onMounted(() => {
+  userStore.fetchUser()
+  window.scrollTo(0, 0)
   getProduct();
 });
 </script>
@@ -93,12 +101,22 @@ onMounted(() => {
                   </li>
                 </ul>
               </div>
-              <RouterLink
-                to="/pricing"
-                class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow"
-              >
-                Download Now
-              </RouterLink>
+              <template v-if="user.data.subscription.length > 0">
+                <a
+                  :href="items.file"
+                  class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow"
+                >
+                  Download Now
+                </a>
+              </template>
+              <template v-else>
+                <RouterLink
+                  to="/pricing"
+                  class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow"
+                >
+                  Subscribe
+                </RouterLink>
+              </template>
             </div>
           </div>
         </aside>
