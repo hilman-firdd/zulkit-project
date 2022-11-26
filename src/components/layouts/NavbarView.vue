@@ -1,8 +1,19 @@
 <script setup>
+import { onMounted, computed } from "vue";
+import { useUserStore } from '@/stores/user';
+
 import Logo from "./LogoView.vue";
 import Navigation from "./NavigationView.vue";
 import UserInfo from "./UserInfoView.vue";
 import AuthButton from "./AuthButton.vue"
+
+const userStore = useUserStore();
+const user = computed(() => userStore.user)
+const isLoggedIn = computed(() => userStore.isLoggedIn);
+
+onMounted(() => {
+  userStore.fetchUser()
+});
 </script>
 
 <template>
@@ -13,8 +24,8 @@ import AuthButton from "./AuthButton.vue"
       class="container flex flex-wrap items-center justify-between mx-auto my-2"
     >
       <logo/>
-      <AuthButton/>
-      <!-- <UserInfo/> -->
+      <UserInfo v-if="isLoggedIn" :user="user.data"/>
+      <AuthButton v-else/>
       <Navigation/>
     </div>
   </nav>
